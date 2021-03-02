@@ -32,20 +32,16 @@ public class ProductRepository {
     }
 
     public void removeById(int id) {
-        try {
-            findById(id);
-            int length = items.length - 1;
-            Product[] tmp = new Product[length];
-            int index = 0;
-            for (Product item : items) {
-                if (item.getId() != id) {
-                    tmp[index] = item;
-                    index++;
-                }
+        findById(id);
+        int length = items.length - 1;
+        Product[] tmp = new Product[length];
+        int index = 0;
+        for (Product item : items) {
+            if (item.getId() != id) {
+                tmp[index] = item;
+                index++;
             }
-            items = tmp;
-        } catch (NotFoundException e) {
-            e.printStackTrace();
         }
+        items = tmp;
     }
 }
